@@ -7,13 +7,10 @@ load_dotenv()
 # ---------------------------------------------------------------------------
 # BigQuery client (lazy init so SQLite fallback works without GCP credentials)
 # ---------------------------------------------------------------------------
-
-def _get_bq_client():
-    import streamlit as st
-    from google.cloud import bigquery
-    from google.oauth2 import service_account
-    
     def _get_bq_client():
+        import streamlit as st
+        from google.cloud import bigquery
+        from google.oauth2 import service_account
         credentials = service_account.Credentials.from_service_account_info(
             st.secrets["gcp_service_account"],
             scopes=["https://www.googleapis.com/auth/bigquery"]
