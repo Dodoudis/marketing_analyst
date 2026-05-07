@@ -18,7 +18,7 @@ from tools import TOOL_DEFINITIONS, dispatch_tool, get_schema
 # ---------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="Marketing Analytics Agent",
+    page_title="Marketing Analytics Agent | Dodoudis",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -354,7 +354,7 @@ with st.sidebar:
 st.markdown("""
 <div style="margin-bottom: 1.5rem;">
     <h1 style="font-size: 1.8rem; font-weight: 800; color: #e8e6f0; margin: 0; letter-spacing: -0.02em;">
-        Marketing Analytics Agent
+        Marketing Analytics Agent | Dodoudis
     </h1>
     <p style="color: #6b6b8a; font-size: 0.85rem; margin-top: 4px; font-family: 'DM Mono', monospace;">
         Ask anything about your campaign performance
