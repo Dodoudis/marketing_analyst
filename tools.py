@@ -38,7 +38,9 @@ def _get_sqlite_connection():
 
 
 def _use_bigquery() -> bool:
-    return os.getenv("USE_BIGQUERY", "false").lower() == "true"
+    import streamlit as st
+    value = os.getenv("USE_BIGQUERY") or st.secrets.get("USE_BIGQUERY", "false")
+    return str(value).lower() == "true"
 
 
 # ---------------------------------------------------------------------------
