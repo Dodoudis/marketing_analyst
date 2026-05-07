@@ -329,7 +329,12 @@ if "last_sql" not in st.session_state:
 # ---------------------------------------------------------------------------
 
 def run_agent(user_question: str):
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+
+    if not api_key:
+        api_key = st.secrets["ANTHROPIC_API_KEY"]
+    
+    client = anthropic.Anthropic(api_key=api_key)
 
     st.session_state.conversation_history.append(
         {"role": "user", "content": user_question}
