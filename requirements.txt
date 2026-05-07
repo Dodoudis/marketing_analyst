@@ -1,0 +1,8 @@
+streamlit
+anthropic
+python-dotenv
+pandas
+google-cloud-bigquery
+google-auth
+db-dtypes
+pyarrow
