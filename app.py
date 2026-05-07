@@ -286,7 +286,7 @@ def _extract_text(content_blocks):
 with st.sidebar:
     st.markdown("""
     <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e30;">
-        <p class="agent-title">MKT Agent</p>
+        <p class="agent-title">Dodoudis | MKT Agent</p>
         <p class="agent-subtitle">CLAUDE + BIGQUERY</p>
     </div>
     """, unsafe_allow_html=True)
