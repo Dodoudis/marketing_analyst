@@ -9,19 +9,22 @@ load_dotenv()
 # ---------------------------------------------------------------------------
 
 def _get_bq_client():
+    import streamlit as st
     from google.cloud import bigquery
     from google.oauth2 import service_account
-
-    key_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-    if not key_path:
-        raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS not set in .env")
-
-    credentials = service_account.Credentials.from_service_account_file(
-        key_path,
-        scopes=["https://www.googleapis.com/auth/bigquery"]
-    )
-    project = os.getenv("GCP_PROJECT_ID")
-    return bigquery.Client(credentials=credentials, project=project)
+    
+    def _get_bq_client():
+        credentials = service_account.Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"],
+            scopes=["https://www.googleapis.com/auth/bigquery"]
+        )
+    
+        project = st.secrets["GCP_PROJECT_ID"]
+    
+        return bigquery.Client(
+            credentials=credentials,
+            project=project,
+        )
 
 
 # ---------------------------------------------------------------------------
