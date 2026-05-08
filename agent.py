@@ -21,8 +21,8 @@ load_dotenv()
 # ---------------------------------------------------------------------------
 
 MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 2048
-MAX_TOOL_ROUNDS = 8  # prevents infinite loops if the LLM keeps calling tools
+MAX_TOKENS = 1024
+MAX_TOOL_ROUNDS = 6  # prevents infinite loops if the LLM keeps calling tools
 
 SYSTEM_PROMPT = f"""You are a marketing analytics assistant with direct access to a 
 marketing performance database.
@@ -47,6 +47,8 @@ RULES:
 - If a query returns no rows, say so clearly and suggest why.
 - If a query fails, read the error, fix the SQL, and retry once.
 - Keep answers focused. Lead with the key insight, then the supporting data.
+- The schema is already provided above. Only call get_schema() if you need 
+  to double-check a specific column. Never call it on every question.
 
 DATABASE SCHEMA:
 {get_schema()}
