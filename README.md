@@ -37,7 +37,7 @@ LLM Agent (Claude API)
   └── summarise(result)   — formats rows for the final answer
       │
       ▼
-BigQuery (5 views at different granularities)
+BigQuery (5 views at different level of detail)
       │
       ▼
 Plain-English answer + data table
@@ -59,7 +59,7 @@ Failed queries are caught and returned to the LLM as error messages — the agen
 
 ## Data Layer
 
-Five BigQuery views at different granularities, each pre-calculating KPIs from raw metrics:
+Five BigQuery views at different level of details, each pre-calculating KPIs from raw metrics:
 
 | View | Granularity | Use case |
 |---|---|---|
