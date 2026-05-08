@@ -8,7 +8,7 @@ Built with the Anthropic Claude API (tool use), BigQuery, and Streamlit.
 
 ## Demo
 
-> [Video](https://www.loom.com/share/20d8c08797b341ada37a0f1764abd47a)
+> [Watch Live demo](https://www.loom.com/share/20d8c08797b341ada37a0f1764abd47a)
 
 ---
 
