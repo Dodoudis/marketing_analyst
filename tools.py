@@ -230,3 +230,19 @@ def dispatch_tool(tool_name: str, tool_input: dict) -> str:
 
     else:
         return f"Unknown tool: {tool_name}"
+
+# ---------------------------------------------------------------------------
+# Do not re-authenticate BigQuery client on every query
+# ---------------------------------------------------------------------------
+
+@st.cache_resource
+def _get_bq_client():
+    from google.cloud import bigquery
+    from google.oauth2 import service_account
+
+    credentials = service_account.Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"],
+        scopes=["https://www.googleapis.com/auth/bigquery"]
+    )
+    project = st.secrets["GCP_PROJECT_ID"]
+    return bigquery.Client(credentials=credentials, project=project)
