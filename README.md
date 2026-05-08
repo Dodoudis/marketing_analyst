@@ -105,66 +105,7 @@ ctr  = SUM(clicks) / NULLIF(SUM(impressions), 0)
 ├── bigquery_views.sql      — BigQuery view definitions
 ├── marketing_sample_data.csv  — Synthetic dataset (4,026 rows)
 ├── requirements.txt
-└── .streamlit/
-    └── secrets.toml        — Credentials (not committed)
 ```
-
----
-
-## Setup
-
-### 1. Clone the repo
-
-```bash
-git clone https://github.com/your-username/marketing-analytics-agent.git
-cd marketing-analytics-agent
-```
-
-### 2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Set up BigQuery
-
-- Create a BigQuery dataset (e.g. `aiagent`)
-- Load `marketing_sample_data.csv` as table `mart_campaign_performance`
-- Run `bigquery_views.sql` in the BigQuery console to create the five views
-- Create a GCP service account with **BigQuery Data Viewer** and **BigQuery Job User** roles
-- Download the service account JSON key
-
-### 4. Configure secrets
-
-Create `.streamlit/secrets.toml`:
-
-```toml
-ANTHROPIC_API_KEY = "sk-ant-..."
-GCP_PROJECT_ID    = "your-project-id"
-BQ_DATASET        = "aiagent"
-
-[gcp_service_account]
-type                        = "service_account"
-project_id                  = "your-project-id"
-private_key_id              = ""
-private_key                 = "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----\n"
-client_email                = "your-service-account@your-project.iam.gserviceaccount.com"
-client_id                   = ""
-auth_uri                    = "https://accounts.google.com/o/oauth2/auth"
-token_uri                   = "https://oauth2.googleapis.com/token"
-auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
-client_x509_cert_url        = ""
-```
-
-All values map directly from your downloaded service account JSON file.
-
-### 5. Run
-
-```bash
-streamlit run app.py
-```
-
-Opens at `localhost:8501`.
 
 ---
 
